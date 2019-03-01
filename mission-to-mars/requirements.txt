@@ -1,0 +1,5 @@
+Flask==1.0.2
+Flask_PyMongo==2.2.0
+pandas==0.23.4
+splinter==0.10.0
+beautifulsoup4==4.7.1

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mission To Mars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <div class="container-fluid">
+    <div class="jumbotron"  style="background-image: url(https://cdn.pixabay.com/photo/2016/12/11/21/00/space-1900352_1280.jpg); background-size: cover; background-position: center center; ">
+        <h1 class="display-3" style="text-shadow: 3px 2px black">Mission to Mars</h1>
+        <p class="lead" style="text-shadow: 3px 1px black">Delievering summarized information from the internet on Mars one scrape at a time!</p>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+    </div>
+
+    <div class=" col-lg alert alert-dismissible alert-info">
+        <h4 class="alert-heading" style="text-shadow: 3px 2px black; font-weight: bold">Latest Mars News!</h4>
+        <p class="mb-0"> Updated on: {{ mars.news_date }}</p>
+        <p>{{ mars.news_title }}</p>
+        <p>{{ mars.news_teaser }}</p>
+      </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class=" col-lg-3 alert alert-dismissible alert-warning">
+                <h4 class="alert-heading" style="text-shadow: 3px 2px black; font-weight: bold">Current Weather</h4>
+                <p class="mb-0"> {{ mars.mars_weather_tweet }}</p>
+
+              </div>
+              <div class=" col-lg alert alert-dismissible alert-secondary">
+                <h4 class="alert-heading" style="text-shadow: 3px 2px black; font-weight: bold">Featured Mars Image</h4>
+                <img src="{{ mars.url_img_featured }}" style="max-width: 100%; max-height: auto;" alt="Mars Featured Image">
+              </div>
+              <div class=" col-lg-3 alert alert-dismissible alert-warning">
+                <h4 class="alert-heading" style="text-shadow: 3px 2px black; font-weight: bold">Mars Facts</h4>
+                <p class="mb-0">{{ mars.mars_facts|safe }}</p>
+            </div>
+        </div>
+    </div>
+
+        <div class="panel panel-default">
+            <div class=" col-lg alert alert-dismissible alert-secondary">
+                    <h2>Mars Hemisphere</h2>
+                    <div class="row">
+                        {% for img in mars.hemi_img_url %}
+                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                <a href="temp-page.html">
+                                <img src="{{ img.img_url }}" alt="{{ img.title }}" class=img-fluid>
+                              </a>
+                              <p><em>{{ img.title }}</em></p>
+                            </div>
+                        {% endfor %}
+                      </div>
+            </div>
+         </div>
+
+    </div>
+
+</body>
+  
+</html>
